@@ -18,3 +18,11 @@ class CourseMaterial(models.Model):
 
     def __str__(self):
         return self.chapter_name
+
+class StudentMarks(models.Model):
+    student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='marks')
+    marks_obtained = models.IntegerField(default=0)
+    total_marks = models.IntegerField(default=100)  # Assuming 100 is the total marks
+
+    def __str__(self):
+        return f"{self.student.username} - {self.marks_obtained}/{self.total_marks}"

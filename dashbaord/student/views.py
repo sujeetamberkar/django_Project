@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from .forms import StudentLoginForm
 from teacher.models import Notice  # Assuming notices are stored here
 from teacher.models import CourseMaterial
+from teacher.models import StudentMarks  # Ensure this is imported
 
 def student_login(request):
     if request.method == 'POST':
@@ -29,3 +30,16 @@ def student_notices(request):
 def student_course_materials(request):
     materials = CourseMaterial.objects.all().order_by('-uploaded_at')
     return render(request, 'student/studentcoursematerial.html', {'course_materials': materials})
+def student_marks(request):
+    if not request.user.is_authenticated:
+        return redirect('student_login')
+    try:
+        marks = StudentMarks.objects.get(student=request.user)
+        percentage = (marks.marks_obtained / marks.total_marks) * 100 if marks.total_marks else 0
+    except StudentMarks.DoesNotExist:
+        marks = None
+        percentage = 0
+    return render(request, 'student/studentmarks.html', {
+        'marks': marks,
+        'percentage': percentage
+    })

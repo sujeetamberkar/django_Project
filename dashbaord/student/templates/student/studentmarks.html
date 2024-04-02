@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Marks</title>
+</head>
+<body>
+    <h1>Your Marks</h1>
+    <table border="1">
+        <tr>
+            <th>Marks Obtained</th>
+            <th>Total Marks</th>
+            <th>Percentage</th>
+        </tr>
+        <tr>
+            <td>
+                {% if marks %}
+                    {{ marks.marks_obtained }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>
+                {% if marks %}
+                    {{ marks.total_marks }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>
+                {% if marks %}
+                    {{ percentage|floatformat:2 }}%
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
