@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+    <!-- Notices button -->
+    <form action="{% url 'student_notices' %}" method="get">
+        <button type="submit">Show Notices</button>
+    </form>
+    <!-- Course Materials button -->
+    <form action="{% url 'student_course_materials' %}" method="get">
+        <button type="submit">Course Materials</button>
+    </form>
+</body>
+</html>

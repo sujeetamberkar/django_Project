@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notices</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notices for Students</h1>
+    <table>
+        <tr>
+            <th>Author</th>
+            <th>Notice</th>
+            <th>Date Posted</th>
+        </tr>
+        {% for notice in notices %}
+        <tr>
+            <td>{{ notice.author.username }}</td>
+            <td>{{ notice.text }}</td>
+            <td>{{ notice.created_at|date:"Y-m-d H:i" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

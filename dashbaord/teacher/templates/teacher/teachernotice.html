@@ -1,0 +1,15 @@
+<!-- templates/teacher/teachernotice.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Notices</title>
+</head>
+<body>
+    <h1>Submit a Notice</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload Notice</button>
+    </form>
+</body>
+</html>

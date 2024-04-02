@@ -1,0 +1,19 @@
+{% load youtube_filters %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Materials</title>
+</head>
+<body>
+    <h1>Course Materials</h1>
+    {% for material in course_materials %}
+        <h2>{{ material.chapter_name }}</h2>
+        <!-- Embed YouTube video -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ material.video_url|youtube_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br>
+        <!-- Download notes -->
+        <a href="{{ material.notes.url }}" download>Download Notes</a>
+        <hr>
+    {% endfor %}
+</body>
+</html>

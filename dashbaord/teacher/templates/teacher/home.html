@@ -1,0 +1,15 @@
+<!-- templates/teacher/home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Hello, {{ username }}!</h1>
+    <form action="{% url 'teacher_notice' %}">
+        <button type="submit">Go to Notices</button>
+    </form>
+    <a href="{% url 'add_course_material' %}">Add Course Material</a>
+
+</body>
+</html>
